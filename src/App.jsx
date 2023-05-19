@@ -15,9 +15,7 @@ function App() {
       {/* <Sidebar/> */}
       <MainToolBAr />
       <br />
-      <div className='mt-8 flex justify-center'>
-        <TextContainer width="800px" height="800px" placeholder="Type something..." />
-        </div>
+
       
     </div>
   )
