@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import { useContext, useState } from "react";
+import { UndoContext } from "./UndoContext";
 
 const TextContainer = ({ width, height, placeholder }) => {
-  const [text, setText] = useState("");
-
+  
   const containerStyles = {
     width: width || "80%",
     height: height || "1000px",
   };
 
-  const handleTextChange = (event) => {
-    setText(event.target.value);
+
+  const handleChange = (e) => {
+    const newText = e.target.value;
+    //updateText(newText);
   };
 
   return (
@@ -17,11 +19,11 @@ const TextContainer = ({ width, height, placeholder }) => {
       <textarea
         className="resize-none w-full h-full p-4 outline-none"
         placeholder={placeholder || "Start typing here..."}
-        value={text}
-        onChange={handleTextChange}
+        onChange={handleChange}
       />
+      
     </div>
   );
 };
 
-export default TextContainer;
+export default  TextContainer ;

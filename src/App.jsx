@@ -1,7 +1,7 @@
 
-import TextContainer from './Pages/Container'
-import TextEditor from './Pages/Editor'
 import MainToolBAr from './Pages/Main'
+import SidePanel from './Pages/Sidebar'
+
 
 
 
@@ -12,11 +12,9 @@ import MainToolBAr from './Pages/Main'
 function App() {
   return (
     <div className="app bg-gray-100">
-      {/* <Sidebar/> */}
       <MainToolBAr />
-      <br />
-
-      
+      {/* <SidePanel/> */}
+      {/* <DocumentEditor/> */}
     </div>
   )
 }

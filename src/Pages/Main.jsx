@@ -23,8 +23,9 @@ import BulletList from '../utils/BulletListMenu';
 import NumberList from '../utils/NumberedList';
 import EditButton from '../utils/EditingButton';
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from 'react-icons/md';
-import TextEditor from './Editor';
 import TextContainer from './Container';
+import Navbar from './Navigation';
+
 
 const FontSizer = () => {
   const selectedText = window.getSelection().toString();
@@ -174,8 +175,8 @@ const MainToolBAr = () => {
 
   return (
     <>
-      {!isUp && <TextEditor />}
-      <div className={`flex items-center bg-slate-200 space-x-0 h-[45px] rounded-2xl mr-4 ml-4 ${isUp ? 'mt-1' : 'mt-6'} ${isUp ? 'fixed top-0 w-full z-10' : ''}`}>
+      {!isUp && <Navbar />}
+      <div className={`flex items-center bg-slate-200 space-x-0 h-[45px] rounded-2xl mr-4 ml-4 ${isUp ? 'mt-1' : 'mt-0'} ${isUp ? 'fixed top-0 w-full z-10' : ''}`}>
         {toolIcons.map((tool, index) => (
           index >= 5 ? (
             index === 19 ? (
@@ -193,7 +194,7 @@ const MainToolBAr = () => {
               key={index}
               className='rounded-full hover:bg-gray-200 w-[35px]'
               title={tool.tooltip}
-              onClick={() => handleToolClick(tool.tooltip)}
+              onClick={() => tool.func}
             >
               {tool.icon}
             </IconButton>

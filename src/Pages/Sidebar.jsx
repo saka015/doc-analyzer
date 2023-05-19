@@ -1,130 +1,66 @@
-import { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import {
-  Drawer,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-} from '@material-ui/core';
-import {
-  ChevronLeft as ChevronLeftIcon,
-  Notes as NotesIcon,
-  AttachFile as AttachFileIcon,
-  Share as ShareIcon,
-} from '@material-ui/icons';
+import React, { useState } from 'react';
+import { MdKeyboardArrowLeft } from 'react-icons/md';
+import { BiCalendarAlt, BiNote, BiTask, BiMap } from 'react-icons/bi';
+import { AiFillContacts } from 'react-icons/ai';
+import { IoExtensionPuzzleOutline } from 'react-icons/io5';
+import './SideBar.css'
 
-const drawerWidth = 240;
+const SidePanel = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: 36,
-  },
-  hide: {
-    display: 'none',
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-    whiteSpace: 'nowrap',
-  },
-  drawerOpen: {
-    width: drawerWidth,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  drawerClose: {
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    overflowX: 'hidden',
-    width: theme.spacing(7) + 1,
-    [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9) + 1,
-    },
-  },
-  toolbar: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-  },
-}));
-
-const Sidebar = () => {
-  const classes = useStyles();
-  const [open, setOpen] = useState(false);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
+  const togglePanel = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
-    <div className={classes.root}>
-      <Drawer
-        variant="permanent"
-        className={open ? classes.drawerOpen : classes.drawerClose}
-        classes={{
-          paper: open ? classes.drawerOpen : classes.drawerClose,
-        }}
-      >
-        <div className={classes.toolbar}>
-          <ChevronLeftIcon onClick={handleDrawerClose} />
-        </div>
-        <List>
-          <ListItem button>
-            <ListItemIcon>
-              <NotesIcon />
-            </ListItemIcon>
-            <ListItemText primary="Documents" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <AttachFileIcon />
-            </ListItemIcon>
-            <ListItemText primary="Attachments" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <ShareIcon />
-            </ListItemIcon>
-            <ListItemText primary="Shared with Me" />
-          </ListItem>
-        </List>
-      </Drawer>
+    <div className={`side-panel ${isOpen ? 'open' : ''}`}>
+      <div className="panel-header">
+        <button className="panel-toggle" onClick={togglePanel}>
+          <MdKeyboardArrowLeft className="panel-icon" />
+        </button>
+      </div>
+      <nav className="panel-nav">
+        <ul className="panel-menu">
+          <li className="panel-menu-item">
+            <a href="/calendar" className="panel-link">
+              <BiCalendarAlt className="panel-icon" />
+              <span className="panel-text">Calendar</span>
+            </a>
+          </li>
+          <li className="panel-menu-item">
+            <a href="/keep" className="panel-link">
+              <BiNote className="panel-icon" />
+              <span className="panel-text">Keep</span>
+            </a>
+          </li>
+          <li className="panel-menu-item">
+            <a href="/tasks" className="panel-link">
+              <BiTask className="panel-icon" />
+              <span className="panel-text">Tasks</span>
+            </a>
+          </li>
+          <li className="panel-menu-item">
+            <a href="/contacts" className="panel-link">
+              <AiFillContacts className="panel-icon" />
+              <span className="panel-text">Contacts</span>
+            </a>
+          </li>
+          <li className="panel-menu-item">
+            <a href="/maps" className="panel-link">
+              <BiMap className="panel-icon" />
+              <span className="panel-text">Maps</span>
+            </a>
+          </li>
+          <li className="panel-menu-item">
+            <a href="/addons" className="panel-link">
+              <IoExtensionPuzzleOutline className="panel-icon" />
+              <span className="panel-text">Get add-ons</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   );
 };
 
-export default Sidebar
+export default SidePanel;
