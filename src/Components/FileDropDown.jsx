@@ -7,11 +7,16 @@ import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
-import { MdOutlineArrowDropDown } from "react-icons/md";
+import { MdOutlineMail ,MdOutlineDriveFileRenameOutline } from "react-icons/md";
 import { TiDocumentText } from 'react-icons/ti'
-import { BiFolder } from 'react-icons/bi'
+import { BiFolder , BiCheckCircle } from 'react-icons/bi'
 import { IoMdCopy } from 'react-icons/io'
-import {RiUserShared2Line} from 'react-icons/ri'
+import { RiUserShared2Line , RiHistoryFill } from 'react-icons/ri'
+import { TbDownload } from 'react-icons/tb'
+import { VscTrash } from 'react-icons/vsc'
+import { AiOutlineInfoCircle , AiFillPrinter } from 'react-icons/ai'
+import { GrLanguage } from 'react-icons/gr'
+import {HiOutlineDocumentText} from 'react-icons/hi'
 
 export default function FileDropDown() {
   const [open, setOpen] = React.useState(false);
@@ -79,17 +84,17 @@ export default function FileDropDown() {
                 placement === "bottom-start" ? "left top" : "left bottom",
             }}
           >
-            <Paper sx={{borderRadius:4 , width:300}}>
+            <Paper className="text-sm" sx={{borderRadius:4 , width:300}}>
               <ClickAwayListener onClickAway={handleClose}>
                               <MenuList
-                                  className="rounded-xl"
+                                  className="rounded-xl text-sm"
                   autoFocusItem={open}
                   id="composition-menu"
                   aria-labelledby="composition-button"
                   onKeyDown={handleListKeyDown}
                               >
-                                <Box className="border-b-2">
-                                      <MenuItem className="flex" onClick={handleClose}>
+                                <Box className="border-b-2 text-sm"  sx={{fontSize:'20px'}}>
+                                      <MenuItem className="flex text-sm" onClick={handleClose}>
                                           <TiDocumentText className="mr-2"/> New
                                       </MenuItem>
                                        <MenuItem className="flex" onClick={handleClose}>
@@ -104,42 +109,42 @@ export default function FileDropDown() {
                                           <RiUserShared2Line  className="mr-2"/> Share
                                       </MenuItem>
                                        <MenuItem className="flex" onClick={handleClose}>
-                                          <TiDocumentText  className="mr-2"/> Email
+                                          <MdOutlineMail  className="mr-2"/> Email
                                       </MenuItem>
                                       <MenuItem className="flex" onClick={handleClose}>
-                                          <TiDocumentText  className="mr-2"s/> Download
+                                          <TbDownload  className="mr-2"s/> Download
                                       </MenuItem>
                                   </Box>
                                    <Box className="border-b-2">
                                       <MenuItem className="flex" onClick={handleClose}>
-                                          <TiDocumentText/> Rename
+                                          <MdOutlineDriveFileRenameOutline  className="mr-2"/> Rename
                                       </MenuItem>
-                                       <MenuItem className="flex" onClick={handleClose}>
-                                          <TiDocumentText/> Move to Trash
+                                       <MenuItem disabled={true} className="flex" onClick={handleClose}>
+                                          <VscTrash  className="mr-2"/> Move to Trash
                                       </MenuItem>
                                       
                                   </Box>
                                   <Box className="border-b-2">
-                                      <MenuItem className="flex" onClick={handleClose}>
-                                          <TiDocumentText/> Version History
+                                      <MenuItem disabled={true} className="flex" onClick={handleClose}>
+                                          <RiHistoryFill  className="mr-2"/> Version History
                                       </MenuItem>
                                        <MenuItem className="flex" onClick={handleClose}>
-                                          <TiDocumentText/> Make available offline
+                                          <BiCheckCircle className="mr-2"/> Make available offline
                                       </MenuItem>
                                       
                                   </Box>
                                   <Box>
                                       <MenuItem className="flex" onClick={handleClose}>
-                                          <TiDocumentText/> Details
+                                          <AiOutlineInfoCircle  className="mr-2"/> Details
                                       </MenuItem>
                                        <MenuItem className="flex" onClick={handleClose}>
-                                          <TiDocumentText/> Language
+                                          <GrLanguage  className="mr-2"/> Language
                                       </MenuItem>
                                       <MenuItem className="flex" onClick={handleClose}>
-                                          <TiDocumentText/> Page Setup
+                                          <HiOutlineDocumentText  className="mr-2"/> Page Setup
                                       </MenuItem>
                                        <MenuItem className="flex" onClick={handleClose}>
-                                          <TiDocumentText/> Print
+                                          <AiFillPrinter  className="mr-2"/> Print
                                       </MenuItem>
                                   </Box>
                   

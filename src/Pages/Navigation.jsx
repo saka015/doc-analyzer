@@ -8,6 +8,9 @@ import { Button, IconButton } from '@mui/material';
 import { TbLock } from 'react-icons/tb'
 import { SiGooglemeet } from 'react-icons/si'
 import {RiArrowDropDownFill} from 'react-icons/ri'
+import EditDropDown from '../Components/EditDropDown';
+import ViewDropDown from '../Components/ViewDropDown';
+import InsertDropDown from '../Components/InsertDropDown';
 
 const Navbar = () => {
   return (
@@ -35,14 +38,14 @@ const Navbar = () => {
             <button style={{zIndex: '999'}} className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
               <FileDropDown />
             </button>
-            <button className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
-              Edit
+            <button style={{zIndex: '999'}} className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
+              <EditDropDown/>
             </button>
-            <button className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
-              View
+            <button style={{zIndex: '999'}} className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
+              <ViewDropDown/>
             </button>
-            <button className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
-              Insert
+            <button style={{zIndex: '999'}} className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
+               <InsertDropDown/>
             </button>
             <button className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
               Format
