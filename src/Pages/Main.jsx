@@ -25,6 +25,7 @@ import EditButton from '../utils/EditingButton';
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from 'react-icons/md';
 import TextContainer from './Container';
 import Navbar from './Navigation';
+import { rgbToHex } from '@material-ui/core';
 
 
 const FontSizer = () => {
@@ -176,7 +177,7 @@ const MainToolBAr = () => {
   return (
     <>
       {!isUp && <Navbar />}
-      <div className={`flex items-center bg-slate-200 space-x-0 h-[45px] rounded-2xl mr-4 ml-4 ${isUp ? 'mt-1' : 'mt-0'} ${isUp ? 'fixed top-0 w-full z-10' : ''}`}>
+      <div style={{backgroundColor:'#edf2fa'}} className={`flex items-center  space-x-0 h-[45px] rounded-2xl mr-4 ml-4 ${isUp ? 'mt-1' : 'mt-0'} ${isUp ? 'fixed top-0 w-full z-10' : ''}`}>
         {toolIcons.map((tool, index) => (
           index >= 5 ? (
             index === 19 ? (

@@ -72,13 +72,13 @@ const Navbar = () => {
                sx={{color:'black', minWidth:0 , padding:0 , margin:0}}><MdOutlineComment className='text-2xl mt-1 mr-5' /></Button>
               <IconButton sx={{minWidth:0 , padding:0 , margin:0}}><SiGooglemeet className='font-thin'/><RiArrowDropDownFill/></IconButton>
               
-              <Button  sx={{minWidth:0, color:'black', backgroundColor:'#bbdefb', borderRadius:10 , textTransform: "none" ,'&:hover': {
+              <Button  sx={{minWidth:0, color:'black', backgroundColor:'#c2e7ff', borderRadius:10 , textTransform: "none" ,'&:hover': {
       backgroundColor: '#b2ebf2',
       // Reset on touch devices, it doesn't add specificity
       '@media (hover: none)': {
         backgroundColor: '#bbdefb',
       },
-    }, }}><div className='flex items-center px-3'><TbLock className='text-xl mr-2'/> <p className='mt-1'>Share</p></div></Button>
+    }, }}><div className='flex items-center px-3'><TbLock className='text-xl mr-2'/> <p style={{textDecorationColor:'#001d35'}} className='mt-1'>Share</p></div></Button>
         <BiUserCircle style={{zIndex:'99999'}} className='text-4xl' />
       </div>
     </div>
