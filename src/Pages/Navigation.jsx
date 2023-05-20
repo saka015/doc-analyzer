@@ -18,17 +18,17 @@ import HelpDropDown from '../Components/HelpDropDown';
 
 const Navbar = () => {
   return (
-    <div className="w-full flex justify-between items-center px-3 pb-1 border-b bg-gray-100">
+    <div className="w-full flex justify-between items-center px-3 pb-1 border-b bg-slate-50">
       {/* Left */}
       <div className="w-full flex justify-start items-center overflow-x-hidden md:overflow-visible">
-        <img className='w-9 h-10 bg-gray-100' src={Icon} alt='icon'/>
-              <div className="flex flex-col bg-gray-100">
+        <img className='w-9 h-10 bg-slate-50' src={Icon} alt='icon'/>
+              <div className="flex flex-col bg-slate-50">
                   <div className="flex items-center">
                   <input
                     
             maxLength={25}
             type="text"
-            className="font-medium text-base px-2 w-40  bg-gray-100 pb-0 pt-0 mt-2"
+            className="font-medium text-base px-2 w-40  bg-slate-50 pb-0 pt-0 mt-2"
             name=""
             id=""
             placeholder="Untitled Document"
@@ -39,28 +39,28 @@ const Navbar = () => {
                       </div>
            
           <div className="flex items-center">
-            <button style={{zIndex: '999'}} className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
+            <button style={{zIndex: '999'}} className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-slate-50 rounded-md">
               <FileDropDown />
             </button>
-            <button style={{zIndex: '999'}} className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
+            <button style={{zIndex: '999'}} className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-slate-50 rounded-md">
               <EditDropDown/>
             </button>
-            <button style={{zIndex: '999'}} className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
+            <button style={{zIndex: '999'}} className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-slate-50 rounded-md">
               <ViewDropDown/>
             </button>
-            <button style={{zIndex: '999'}} className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
+            <button style={{zIndex: '999'}} className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-slate-50 rounded-md">
                <InsertDropDown/>
             </button>
-            <button style={{zIndex: '999'}} className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
+            <button style={{zIndex: '999'}} className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-slate-50 rounded-md">
                <FormatDropDown/>
             </button>
-            <button style={{zIndex: '999'}} className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
+            <button style={{zIndex: '999'}} className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-slate-50 rounded-md">
               <ToolDropDown/>
             </button>
-            <button style={{zIndex: '999'}}  className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
+            <button style={{zIndex: '999'}}  className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-slate-50 rounded-md">
               <ExtensionDropDown/>
             </button>
-            <button style={{zIndex: '999'}}  className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
+            <button style={{zIndex: '999'}}  className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-slate-50 rounded-md">
               <HelpDropDown/>
             </button>
           </div>
@@ -79,7 +79,7 @@ const Navbar = () => {
         backgroundColor: '#bbdefb',
       },
     }, }}><div className='flex items-center px-3'><TbLock className='text-xl mr-2'/> <p className='mt-1'>Share</p></div></Button>
-        <BiUserCircle className='text-4xl' />
+        <BiUserCircle style={{zIndex:'99999'}} className='text-4xl' />
       </div>
     </div>
   );
