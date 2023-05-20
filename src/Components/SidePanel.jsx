@@ -6,9 +6,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Fab from '@material-ui/core/Fab';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import MailIcon from '@material-ui/icons/Mail';
-import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
-import DescriptionIcon from '@material-ui/icons/Description';
 
 export default function SideBar() {
   const [open, setOpen] = useState(false);
@@ -16,6 +13,16 @@ export default function SideBar() {
   const toggleDrawer = () => {
     setOpen(!open);
   };
+
+  const iconUrls = [
+    'https://img.icons8.com/color/48/google-calendar--v2.png',
+    'https://img.icons8.com/color/48/google-keep.png',
+      'https://play-lh.googleusercontent.com/pjUulZ-Vdo7qPKxk3IRhnk8SORPlgSydSyYEjm7fGcoXO8wDyYisWXwQqEjMryZ_sqK2',
+      'https://img.icons8.com/color/48/google-contacts.png',
+      'https://img.icons8.com/fluency/48/google-maps-new.png',
+      'https://img.icons8.com/office/16/horizontal-line.png',
+    'https://img.icons8.com/ios/50/plus-math--v1.png'
+  ];
 
   return (
     <div>
@@ -33,10 +40,10 @@ export default function SideBar() {
       >
         <div style={{ height: '20px' }}></div>
         <List style={{ marginTop: '30px', padding: '10px 0' }}>
-          {['Mail', 'Calendar', 'Docs'].map((text, index) => (
-            <ListItem button key={text} style={{ marginBottom: '10px' }}>
+          {iconUrls.map((url, index) => (
+            <ListItem button key={index} style={{ marginBottom: '10px' , marginRight:'5px' }}>
               <ListItemIcon>
-                {index === 0 ? <MailIcon /> : index === 1 ? <CalendarTodayIcon /> : <DescriptionIcon />}
+                <img className='h-6 w-6' src={url} alt={`icon-${index}`} />
               </ListItemIcon>
             </ListItem>
           ))}

@@ -20,6 +20,7 @@ import Popup from '../Components/Popup';
 
 const Navbar = () => {
   const [showPopup, setShowPopup] = useState(false);
+  const [documentName, setDocumentName] = useState('');
 
   const openPopup = () => {
     setShowPopup(true);
@@ -29,6 +30,14 @@ const Navbar = () => {
     setShowPopup(false);
   };
 
+  const handleInputChange = (event) => {
+    setDocumentName(event.target.value);
+  };
+
+  const handleShareClick = () => {
+    openPopup();
+  };
+
   return (
     <div className="w-full flex justify-between items-center px-3 pb-1 border-b bg-slate-50">
       {/* Left */}
@@ -36,7 +45,14 @@ const Navbar = () => {
         <img className="w-9 h-10 bg-slate-50" src={Icon} alt="icon" />
         <div className="flex flex-col bg-slate-50">
           <div className="flex items-center">
-            <input maxLength={25} type="text" className="font-medium text-base px-2 w-40 bg-slate-50 pb-0 pt-0 mt-2" name="" id="" placeholder="Untitled Document" />
+            <input
+              maxLength={25}
+              type="text"
+              className="font-medium text-base px-2 w-40 bg-slate-50 pb-0 pt-0 mt-2"
+              placeholder="Untitled Document"
+              value={documentName}
+              onChange={handleInputChange}
+            />
             <MdOutlineStarBorderPurple500 className="text-xl mt-2 ml-1" />
             <MdOutlineDriveFileMove className="text-xl mt-2 ml-2" />
             <BsCloudCheck className="text-xl mt-2 ml-2" />
@@ -69,14 +85,15 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      {/* Right */}
+      
       <div className="flex items-center flex-shrink-0 pl-3 gap-x-4">
-       <Button
-          onClick={openPopup}
+        <Button
+          onClick={handleShareClick}
           sx={{
             minWidth: 0,
             color: 'black',
             backgroundColor: '#c2e7ff',
+            marginRight: 2,
             borderRadius: 10,
             textTransform: 'none',
             '&:hover': {
@@ -88,14 +105,14 @@ const Navbar = () => {
           }}
         >
           <div className="flex items-center px-3">
-            <TbLock className="text-xl mr-2" />{' '}
+            <TbLock className="text-xl mr-5" />{' '}
             <p style={{ textDecorationColor: '#001d35' }} className="mt-1">
               Share
             </p>
           </div>
         </Button>
         <BiUserCircle style={{ zIndex: '99999' }} className="text-4xl" />
-         <Popup isOpen={showPopup} onClose={closePopup} />
+        <Popup isOpen={showPopup} onClose={closePopup} documentName={documentName} />
       </div>
     </div>
   );
