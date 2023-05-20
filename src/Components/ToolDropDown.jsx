@@ -7,23 +7,50 @@ import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
-import { MdOutlineMail, MdOutlineRequestPage,MdOutlinePostAdd, MdNotes, MdInsertChartOutlined,MdNavigateNext , MdCopyAll , MdContentPaste , MdContentPasteOff ,MdSelectAll , MdOutlineFindReplace } from "react-icons/md";
+import {
+  MdFormatLineSpacing,
+  MdSpellcheck,
+  MdOutlineRateReview,
+  MdOutlineCompareArrows,
+  MdOutlineRequestPage,
+  MdOutlinePostAdd,
+  MdNotes,
+  MdInsertChartOutlined,
+  MdNavigateNext,
+  MdCopyAll,
+  MdContentPaste,
+  MdContentPasteOff,
+  MdSelectAll,
+    MdOutlineFindReplace,
+  MdOutlineTranslate
+} from "react-icons/md";
 import { TiDocumentText } from "react-icons/ti";
-import { BiFolder, BiCheckCircle , BiCut , BiImageAlt } from "react-icons/bi";
-import { IoMdCopy , IoIosArrowDropdown } from "react-icons/io";
-import { RiUserShared2Line, RiHistoryFill , RiTableLine } from "react-icons/ri";
-import { TbMathPi , TbHash , TbPageBreak } from "react-icons/tb";
-import { VscTrash } from "react-icons/vsc";
-import { AiOutlineInfoCircle, AiFillPrinter, AiOutlineLine } from "react-icons/ai";
-import { GrLanguage ,GrEmoji } from "react-icons/gr";
+import { BiCheckCircle, BiCut, BiImageAlt } from "react-icons/bi";
+import { IoMdCopy, IoIosArrowDropdown } from "react-icons/io";
+import { RiUserShared2Line, RiHistoryFill, RiTableLine } from "react-icons/ri";
+import { TbMathPi, TbHash, TbPageBreak, TbColumns } from "react-icons/tb";
+import { VscTrash, VscRemoteExplorer } from "react-icons/vsc";
+import {
+  AiOutlineInfoCircle,
+  AiFillPrinter,
+  AiOutlineLine,
+} from "react-icons/ai";
+import { GrLanguage, GrEmoji , GrUserSettings } from "react-icons/gr";
 import { HiOutlineDocumentText } from "react-icons/hi";
-import { GrUndo, GrRedo } from 'react-icons/gr'
-import {CgSmartHomeHeat} from 'react-icons/cg'
-import { ImImage , ImPageBreak } from 'react-icons/im'
-import {RiOmega} from 'react-icons/ri'
+import { HiOutlineListBullet } from "react-icons/hi2";
+import { GrUndo, GrRedo } from "react-icons/gr";
+import { CgSmartHomeHeat, CgFormatIndentIncrease } from "react-icons/cg";
+import { ImImage, ImPageBreak } from "react-icons/im";
+import { RiOmega, RiFormatClear, RiFileSearchLine } from "react-icons/ri";
+import { BsTypeBold , BsUniversalAccess } from "react-icons/bs";
+import { CiTextAlignJustify } from "react-icons/ci";
+import { TbFileOrientation } from "react-icons/tb";
+import { MdFormatQuote } from "react-icons/md";
+import { GoFileSymlinkFile } from "react-icons/go";
+import { IoMicOutline } from 'react-icons/io5'
+import {IoIosNotificationsOutline} from 'react-icons/io'
 
-
-export default function InsertDropDown() {
+export default function ToolDropDown() {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
@@ -69,7 +96,7 @@ export default function InsertDropDown() {
         aria-haspopup="true"
         onClick={handleToggle}
       >
-        <span className="text-black">Insert</span>
+        <span className="text-black">Tools</span>
       </Button>
       <Popper
         open={open}
@@ -87,7 +114,14 @@ export default function InsertDropDown() {
                 placement === "bottom-start" ? "left top" : "left bottom",
             }}
           >
-            <Paper sx={{ borderRadius: 4, width: 350, maxHeight: 500, overflowY: "auto" }}>
+            <Paper
+              sx={{
+                borderRadius: 4,
+                width: 350,
+                maxHeight: 500,
+                overflowY: "auto",
+              }}
+            >
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList
                   className="rounded-xl"
@@ -95,160 +129,150 @@ export default function InsertDropDown() {
                   id="composition-menu"
                   aria-labelledby="composition-button"
                   onKeyDown={handleListKeyDown}
-                              >
-                                  <Box className="border-b-2 mb-2">
+                >
+                  <Box className="border-b-2 mb-2">
                     <MenuItem
                       className="flex justify-between items-center"
                       onClick={handleClose}
                     >
-                      <div className="flex items-center text-sm">
-                        <BiImageAlt className="mr-2" /> Image
+                      <div className="flex items-center text-base">
+                        <MdSpellcheck className="mr-2 text-base" /> Spelling &
+                        Grammar
                       </div>
-                      <MdNavigateNext className="ml-auto"/>
-                                      </MenuItem>
-                                      <MenuItem
-                      className="flex justify-between items-center"
-                      onClick={handleClose}
-                    >
-                      <div className="flex items-center text-sm">
-                        <RiTableLine className="mr-2" /> Table
-                      </div>
-                      <MdNavigateNext className="ml-auto"/>
-                                      </MenuItem>
-                                       <MenuItem
-                      className="flex justify-between items-center"
-                      onClick={handleClose}
-                    >
-                      <div className="flex items-center text-sm">
-                        <ImImage className="mr-2" /> Drawing
-                      </div>
-                      <MdNavigateNext className="ml-auto"/>
-                                      </MenuItem>
-                                      <MenuItem
-                      className="flex justify-between items-center"
-                      onClick={handleClose}
-                    >
-                      <div className="flex items-center text-sm">
-                        <MdInsertChartOutlined className="mr-2" /> Chart
-                      </div>
-                      <MdNavigateNext className="ml-auto"/>
-                                      </MenuItem>
-                                       <MenuItem
-                      className="flex justify-between items-center"
-                      onClick={handleClose}
-                    >
-                      <div className="flex items-center text-sm">
-                        <AiOutlineLine className="mr-2" /> Horizontal Line
-                      </div>
-                      <div className="ml-auto"></div>
-                                      </MenuItem>
-                                      <MenuItem
-                      className="flex justify-between items-center"
-                      onClick={handleClose}
-                    >
-                      <div className="flex items-center text-sm">
-                        <GrEmoji className="mr-2" /> Emoji
-                      </div>
-                      <div className="ml-auto"></div>
-                                      </MenuItem>
-                                      <MenuItem
-                      className="flex justify-between items-center"
-                      onClick={handleClose}
-                    >
-                      <div className="flex items-center text-sm">
-                        <CgSmartHomeHeat className="mr-2" /> Smart Chips
-                      </div>
-                      <MdNavigateNext className="ml-auto"/>
+                      <MdNavigateNext className="ml-auto" />
                     </MenuItem>
                     <MenuItem
                       className="flex justify-between items-center"
                       onClick={handleClose}
                     >
                       <div className="flex items-center text-sm">
-                        <IoIosArrowDropdown className="mr-2" /> Redo
+                        <TiDocumentText className="mr-2 text-black text-xl" />{" "}
+                        Word count
                       </div>
-                      <div className="ml-auto"></div>
-                                      </MenuItem>
-                                      <MenuItem
+                      <span className="text-sm ml-auto text-gray-500">
+                        Ctrl+Shift+C
+                      </span>
+                    </MenuItem>
+                    <MenuItem
                       className="flex justify-between items-center"
                       onClick={handleClose}
                     >
                       <div className="flex items-center text-sm">
-                        <MdNotes className="mr-2" /> Footnote
+                        <MdOutlineRateReview className="mr-2 text-xl" /> Review
+                        suggested & edits
                       </div>
-                      <div className="ml-auto text-sm text-gray-400">Ctrl+Alt+F</div>
+                      <span className="text-sm ml-auto text-gray-500">
+                        Ctrl+Alt+O
+                      </span>
+                    </MenuItem>
+                    <MenuItem
+                      className="flex justify-between items-center"
+                      onClick={handleClose}
+                    >
+                      <div className="flex items-center text-sm">
+                        <MdOutlineCompareArrows className="mr-2 text-xl" />{" "}
+                        Compare documents
+                      </div>
+                    </MenuItem>
+
+                    <MenuItem
+                      className="flex justify-between items-center"
+                      onClick={handleClose}
+                    >
+                      <div className="flex items-center text-sm">
+                        <MdFormatQuote className="mr-2 text-xl" /> Citations
+                      </div>
+                      <div className="ml-auto"></div>
+                    </MenuItem>
+                    <MenuItem
+                      className="flex justify-between items-center"
+                      onClick={handleClose}
+                    >
+                      <div className="flex items-center text-sm">
+                        <VscRemoteExplorer className="mr-2 text-xl" /> Explore
+                      </div>
+                      <span className="text-sm ml-auto text-gray-500">
+                        Ctrl+Alt+Shift+I
+                      </span>
+                    </MenuItem>
+                    <MenuItem
+                      className="flex justify-between items-center"
+                      onClick={handleClose}
+                    >
+                      <div className="flex items-center text-sm">
+                        <GoFileSymlinkFile className="mr-2 text-xl" /> Linked
+                        objects
+                      </div>
+                    </MenuItem>
+                    
+                    <MenuItem
+                      className="flex justify-between items-center"
+                      onClick={handleClose}
+                    >
+                      <div className="flex items-center text-sm">
+                        <RiFileSearchLine className="mr-2 text-xl" /> Dictionary
+                      </div>
+                      <span className="text-sm ml-auto text-gray-500">
+                        Ctrl+Shift+Y
+                      </span>
                     </MenuItem>
                   </Box>
+
                   <Box className="border-b-2 mb-2">
                     <MenuItem
                       className="flex justify-between items-center"
                       onClick={handleClose}
                     >
                       <div className="flex items-center text-sm">
-                        <MdOutlinePostAdd className="mr-2 text-xl" /> Building Blocks
+                        <MdOutlineTranslate className="mr-2 text-base" /> Translate document
                       </div>
-                      <MdNavigateNext className="ml-auto"/>
-                                      </MenuItem>
-                                   
-                  </Box>
-                                  <Box className="border-b-2 mb-2">
+                    </MenuItem>
                     <MenuItem
                       className="flex justify-between items-center"
                       onClick={handleClose}
                     >
                       <div className="flex items-center text-sm">
-                        <RiOmega className="mr-2 text-xl" /> Special characters
-                      </div>
-                      <MdNavigateNext className="ml-auto"/>
-                                      </MenuItem>
-                                      <MenuItem
+                        <IoMicOutline className="mr-2 text-base" /> Voice typing 
+                                          </div>
+                                           <span className="text-sm ml-auto text-gray-500">
+                        Ctrl+Shift+S
+                      </span>
+                    </MenuItem>
+                   
+                  </Box>
+                  <Box className=" mb-2">
+                    <MenuItem
+                     
                       className="flex justify-between items-center"
                       onClick={handleClose}
                     >
                       <div className="flex items-center text-sm">
-                        <TbMathPi className="mr-2 text-base" /> Equation
+                        <IoIosNotificationsOutline className="mr-2 text-base" /> Notification settings
                       </div>
-                      </MenuItem>
-                                  </Box>
-                                              <Box className="mb-2">
+                    
+                    </MenuItem>
+                    <MenuItem
+                      
+                      className="flex justify-between items-center"
+                      onClick={handleClose}
+                    >
+                      <div className="flex items-center text-sm">
+                        <GrUserSettings className="mr-2 text-base" /> Preferences
+                      </div>
+                     
+                    </MenuItem>
                     <MenuItem
                       className="flex justify-between items-center"
+                      
                       onClick={handleClose}
                     >
                       <div className="flex items-center text-sm">
-                        <MdOutlineRequestPage className="mr-2 text-xl" /> Watermark
+                        <BsUniversalAccess className="mr-2 text-base" /> Accessibility
                       </div>
-                      <MdNavigateNext className="ml-auto"/>
-                                      </MenuItem>
-                                      <MenuItem
-                      className="flex justify-between items-center"
-                      onClick={handleClose}
-                    >
-                      <div className="flex items-center text-sm">
-                        <ImPageBreak className="mr-2 text-base" /> Header and Footer
-                                          </div>
-                                          <MdNavigateNext className="ml-auto"/>
-                                      </MenuItem>
-                                       <MenuItem
-                      className="flex justify-between items-center"
-                      onClick={handleClose}
-                    >
-                      <div className="flex items-center text-sm">
-                        <TbHash className="mr-2 text-base" /> Page Number
-                                          </div>
-                                          <MdNavigateNext className="ml-auto"/>
-                                      </MenuItem>
-                                      <MenuItem
-                      className="flex justify-between items-center"
-                      onClick={handleClose}
-                    >
-                      <div className="flex items-center text-sm">
-                        <TbPageBreak className="mr-2 text-base" /> Page Break
-                                          </div>
-                                          <MdNavigateNext className="ml-auto"/>
-                      </MenuItem>
+                      
+                    </MenuItem>
                   </Box>
-                  
+                 
                 </MenuList>
               </ClickAwayListener>
             </Paper>

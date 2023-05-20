@@ -11,6 +11,10 @@ import {RiArrowDropDownFill} from 'react-icons/ri'
 import EditDropDown from '../Components/EditDropDown';
 import ViewDropDown from '../Components/ViewDropDown';
 import InsertDropDown from '../Components/InsertDropDown';
+import FormatDropDown from '../Components/FormatDropDown';
+import ToolDropDown from '../Components/ToolDropDown';
+import ExtensionDropDown from '../Components/ExtensionDropDown';
+import HelpDropDown from '../Components/HelpDropDown';
 
 const Navbar = () => {
   return (
@@ -47,17 +51,17 @@ const Navbar = () => {
             <button style={{zIndex: '999'}} className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
                <InsertDropDown/>
             </button>
-            <button className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
-              Format
+            <button style={{zIndex: '999'}} className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
+               <FormatDropDown/>
             </button>
-            <button className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
-              Tools
+            <button style={{zIndex: '999'}} className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
+              <ToolDropDown/>
             </button>
-            <button className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
-              Add-ons
+            <button style={{zIndex: '999'}}  className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
+              <ExtensionDropDown/>
             </button>
-            <button className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
-              Help
+            <button style={{zIndex: '999'}}  className="text-sm whitespace-nowrap px-2 py-1 font-medium hover:bg-gray-100 rounded-md">
+              <HelpDropDown/>
             </button>
           </div>
         </div>
