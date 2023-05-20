@@ -1,4 +1,5 @@
 
+import Popup from './Components/Popup'
 import SideBar from './Components/SidePanel'
 import MainToolBAr from './Pages/Main'
 import SidePanel from './Pages/Sidebar'
@@ -13,7 +14,8 @@ import SidePanel from './Pages/Sidebar'
 function App() {
   return (
     <div className="app bg-gray-100">
-      <SideBar/>
+      <SideBar />
+      
       <MainToolBAr />
       
       {/* <SidePanel/> */}
