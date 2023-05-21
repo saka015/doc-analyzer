@@ -1,29 +1,17 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import ToolContext from "../ToolContext";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const TextContainer = ({ width, height, placeholder }) => {
-  const [selectedTool, setSelectedTool] = useContext(ToolContext);
+    const [selectedTool, setSelectedTool] = useContext(ToolContext);
+     const [content, setContent] = useState("");
   const containerStyles = {
     width: width || "80%",
     height: height || "1000px",
     };
-  const textareaRef = useRef(null);
+  const quillRef = useRef(null);
 
-  useEffect(() => {
-    const textarea = textareaRef.current;
-    const newText = textarea.value;
-    const selectionStart = textarea.selectionStart;
-    const selectionEnd = textarea.selectionEnd;
-
-    // Check if the selected tool is 'bold' and text is selected
-    if (selectedTool === "bold" && selectionStart !== selectionEnd) {
-      const updatedText =
-        newText.slice(0, selectionStart) +
-        `**${newText.slice(selectionStart, selectionEnd)}**` +
-        newText.slice(selectionEnd);
-      textarea.value = updatedText;
-    }
-  }, [selectedTool]);
 
   useEffect(() => {
     // Call tool function based on the selected tool
@@ -68,7 +56,7 @@ const TextContainer = ({ width, height, placeholder }) => {
         
       // Handle spell-check functionality
         console.log("bold");
-        
+        applyBoldFormatting()
       }
       else if (selectedTool === "italic") {
       // Handle spell-check functionality
@@ -120,20 +108,32 @@ const TextContainer = ({ width, height, placeholder }) => {
     } 
     // Add more conditions for other tools...
   }, [selectedTool]);
+    const applyBoldFormatting = () => {
+    const quill = quillRef.current.getEditor();
+    const selection = quill.getSelection();
+    if (selection) {
+      const { index, length } = selection;
+      quill.formatText(index, length, "bold", true);
+    }
+  };
 
-  const handleChange = (e) => {
-      const newText = e.target.value;
-      console.log(newText)
+  const handleChange = (value) => {
+     setContent(value);
+      console.log(value)
     // Update text logic
   };
 
   return (
     <div className="relative " style={containerStyles}>
-         <textarea
-        ref={textareaRef}
-        className="resize-none w-full h-full p-4 outline-none"
-        placeholder={placeholder || "Start typing here..."}
+          <ReactQuill
+        ref={quillRef}
+        value={content}
         onChange={handleChange}
+        modules={{
+          toolbar: false, // Disable the toolbar
+        }}
+        placeholder={placeholder || "Start typing here..."}
+        style={{ height: "100%" , backgroundColor:'white' }}
       />
     </div>
   );
