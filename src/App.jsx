@@ -1,8 +1,7 @@
-
-import Popup from './Components/Popup'
+import { useState } from 'react'
 import SideBar from './Components/SidePanel'
 import MainToolBAr from './Pages/Main'
-import SidePanel from './Pages/Sidebar'
+import {ToolProvider} from './ToolContext'
 
 
 
@@ -12,15 +11,18 @@ import SidePanel from './Pages/Sidebar'
 
 
 function App() {
+  const [selectedTool, setSelectedTool] = useState(null);
   return (
+    <ToolProvider value={[selectedTool, setSelectedTool]}>
     <div className="app bg-gray-100">
       <SideBar />
       
-      <MainToolBAr />
+        <MainToolBAr />
+       
       
-      {/* <SidePanel/> */}
-      {/* <DocumentEditor/> */}
-    </div>
+      
+      </div>
+       </ToolProvider>
   )
 }
 
