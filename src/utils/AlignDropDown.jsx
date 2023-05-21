@@ -1,3 +1,4 @@
+// required mui components and icons
 import * as React from "react";
 import Button from "@mui/material/Button";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
@@ -10,14 +11,18 @@ import { MdOutlineArrowDropDown } from "react-icons/md";
 import {CiTextAlignLeft , CiTextAlignCenter, CiTextAlignRight , CiTextAlignJustify} from "react-icons/ci"
 import { IconButton } from "@mui/material";
 
+//Text Aling dropdown
 export default function AlignDropDown() {
-  const [open, setOpen] = React.useState(false);
+  // dropdown open and close state  
+  const [open, setOpen] = React.useState(false); // initially closed
   const anchorRef = React.useRef(null);
-
+ 
+    //function to toggle state
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
+   // closing dropdown 
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
@@ -44,6 +49,7 @@ export default function AlignDropDown() {
     prevOpen.current = open;
   }, [open]);
 
+    //return jsx
   return (
     <div>
       <Button

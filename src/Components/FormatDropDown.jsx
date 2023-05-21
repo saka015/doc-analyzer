@@ -1,3 +1,4 @@
+// Import necessary libraries and components
 import * as React from "react";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
@@ -7,42 +8,43 @@ import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
-import { MdFormatLineSpacing, MdOutlineRequestPage,MdOutlinePostAdd, MdNotes, MdInsertChartOutlined,MdNavigateNext , MdCopyAll , MdContentPaste , MdContentPasteOff ,MdSelectAll , MdOutlineFindReplace } from "react-icons/md";
-import { TiDocumentText } from "react-icons/ti";
-import {  BiCheckCircle , BiCut , BiImageAlt } from "react-icons/bi";
-import { IoMdCopy , IoIosArrowDropdown } from "react-icons/io";
-import { RiUserShared2Line, RiHistoryFill , RiTableLine } from "react-icons/ri";
-import { TbMathPi , TbHash , TbPageBreak ,  TbColumns } from "react-icons/tb";
-import { VscTrash } from "react-icons/vsc";
-import { AiOutlineInfoCircle, AiFillPrinter, AiOutlineLine } from "react-icons/ai";
-import { GrLanguage ,GrEmoji } from "react-icons/gr";
-import { HiOutlineDocumentText } from "react-icons/hi";
+
+// Import icons
+import { MdFormatLineSpacing, MdNavigateNext  } from "react-icons/md";
+import {  BiImageAlt } from "react-icons/bi";
+import {  RiTableLine } from "react-icons/ri";
+import { TbHash ,   TbColumns } from "react-icons/tb";
+import {  AiOutlineLine } from "react-icons/ai";
 import {HiOutlineListBullet} from 'react-icons/hi2'
-import { GrUndo, GrRedo } from 'react-icons/gr'
-import {CgSmartHomeHeat , CgFormatIndentIncrease} from 'react-icons/cg'
-import { ImImage , ImPageBreak } from 'react-icons/im'
-import { RiOmega , RiFormatClear } from 'react-icons/ri'
+import { CgFormatIndentIncrease} from 'react-icons/cg'
+import {  ImPageBreak } from 'react-icons/im'
+import {  RiFormatClear } from 'react-icons/ri'
 import { BsTypeBold } from 'react-icons/bs'
 import { CiTextAlignJustify } from 'react-icons/ci'
 import {TbFileOrientation} from 'react-icons/tb'
 
-
+// Define the FormatDropDown component
 export default function FormatDropDown() {
+  // State to control the dropdown open/close status
   const [open, setOpen] = React.useState(false);
+  
+  // Reference to the dropdown button
   const anchorRef = React.useRef(null);
 
+  // Toggle open state of the dropdown
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
+  // Close the dropdown if clicked away
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-
     setOpen(false);
   };
 
+  // Close dropdown on key events "Tab" or "Escape"
   function handleListKeyDown(event) {
     if (event.key === "Tab") {
       event.preventDefault();
@@ -52,7 +54,7 @@ export default function FormatDropDown() {
     }
   }
 
-  // return focus to the button when we transitioned from !open -> open
+  // Refocus on the dropdown button when dropdown closed
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
     if (prevOpen.current === true && open === false) {
@@ -61,6 +63,8 @@ export default function FormatDropDown() {
 
     prevOpen.current = open;
   }, [open]);
+
+  // JSX rendering
 
   return (
     <div className="">

@@ -10,23 +10,21 @@ import MenuList from "@mui/material/MenuList";
 import Avatar from '@mui/material/Avatar';
 import app from '../assets/apps.png'
 import {
- 
   MdPlaylistAdd,
   MdNavigateNext,
- 
 } from "react-icons/md";
 
-
-
-
 export default function ExtensionDropDown() {
+  // State for dropdown open/close
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
+  // Toggle dropdown open/close
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
+  // Close dropdown when clicking outside
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
@@ -35,6 +33,7 @@ export default function ExtensionDropDown() {
     setOpen(false);
   };
 
+  // Handle keyboard events
   function handleListKeyDown(event) {
     if (event.key === "Tab") {
       event.preventDefault();
@@ -44,7 +43,7 @@ export default function ExtensionDropDown() {
     }
   }
 
-  // return focus to the button when we transitioned from !open -> open
+  // Return focus to the button when transitioning from !open -> open
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
     if (prevOpen.current === true && open === false) {
@@ -56,6 +55,7 @@ export default function ExtensionDropDown() {
 
   return (
     <div className="">
+      {/* Dropdown Button */}
       <Button
         sx={{ textTransform: "none", minWidth: 1, padding: 0 }}
         ref={anchorRef}
@@ -67,6 +67,8 @@ export default function ExtensionDropDown() {
       >
         <span className="text-black">Extensions</span>
       </Button>
+
+      {/* Popper and Menu */}
       <Popper
         open={open}
         anchorEl={anchorRef.current}
@@ -83,6 +85,7 @@ export default function ExtensionDropDown() {
                 placement === "bottom-start" ? "left top" : "left bottom",
             }}
           >
+            {/* Menu Paper */}
             <Paper
               sx={{
                 borderRadius: 4,
@@ -92,6 +95,7 @@ export default function ExtensionDropDown() {
               }}
             >
               <ClickAwayListener onClickAway={handleClose}>
+                {/* Menu List */}
                 <MenuList
                   className="rounded-sm"
                   autoFocusItem={open}
@@ -99,7 +103,9 @@ export default function ExtensionDropDown() {
                   aria-labelledby="composition-button"
                   onKeyDown={handleListKeyDown}
                 >
+                  {/* Menu Items */}
                   <Box className="mb-2">
+                    {/* Add-ons */}
                     <MenuItem
                       className="flex justify-between items-center"
                       onClick={handleClose}
@@ -109,12 +115,14 @@ export default function ExtensionDropDown() {
                       </div>
                       <MdNavigateNext className="ml-auto" />
                     </MenuItem>
+
+                    {/* Apps script */}
                     <MenuItem
                       className="flex justify-between items-center"
                       onClick={handleClose}
                     >
                       <div className="flex items-center text-base">
-                                              <Avatar sx={{height:30 , width:30 , backgroundColor:'transparent'}} className="h-3/5 w-3/5" variant="square"><img className="mr-1" src={app} alt="app" /></Avatar>
+                        <Avatar sx={{height:30 , width:30 , backgroundColor:'transparent'}} className="h-3/5 w-3/5" variant="square"><img className="mr-1" src={app} alt="app" /></Avatar>
                         Apps script
                       </div>
                       <span className="text-sm ml-auto text-gray-500">
@@ -123,8 +131,6 @@ export default function ExtensionDropDown() {
                     </MenuItem>
                     
                   </Box>
-
-                  
                 </MenuList>
               </ClickAwayListener>
             </Paper>

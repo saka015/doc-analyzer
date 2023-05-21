@@ -7,28 +7,24 @@ import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
-import { MdOutlineMail, MdOutlineDriveFileRenameOutline ,MdOutlineModeEditOutline, MdCopyAll , MdContentPaste , MdContentPasteOff ,MdSelectAll , MdOutlineFindReplace } from "react-icons/md";
-import { TiDocumentText } from "react-icons/ti";
-import { BiFolder, BiCheckCircle , BiCut } from "react-icons/bi";
-import { IoMdCopy } from "react-icons/io";
-import { RiUserShared2Line, RiHistoryFill } from "react-icons/ri";
-import { TbDownload } from "react-icons/tb";
-import { VscTrash } from "react-icons/vsc";
-import { AiOutlineInfoCircle, AiFillPrinter } from "react-icons/ai";
-import { GrLanguage } from "react-icons/gr";
-import { HiOutlineDocumentText } from "react-icons/hi";
-import { GrUndo, GrRedo } from 'react-icons/gr'
+import { MdOutlineModeEditOutline } from "react-icons/md";
 import { HiCheck } from 'react-icons/hi'
 import {BsFullscreen} from 'react-icons/bs'
 
+// Component for a dropdown menu with "View" options
 export default function ViewDropDown() {
+  // State variable for the open/close status of the dropdown
   const [open, setOpen] = React.useState(false);
+
+  // Reference to the anchor element, which the dropdown is relatively positioned to
   const anchorRef = React.useRef(null);
 
+  // Function to toggle the dropdown open/closed
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
+  // Function to close the dropdown, except if the event originates from the anchorRef element
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
@@ -37,16 +33,15 @@ export default function ViewDropDown() {
     setOpen(false);
   };
 
+  // Function to handle keydown events, to close the dropdown on 'Tab' or 'Escape'
   function handleListKeyDown(event) {
-    if (event.key === "Tab") {
+    if (event.key === "Tab" || event.key === "Escape") {
       event.preventDefault();
-      setOpen(false);
-    } else if (event.key === "Escape") {
       setOpen(false);
     }
   }
 
-  // return focus to the button when we transitioned from !open -> open
+  // Effect to focus on the anchor element when the dropdown closes
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
     if (prevOpen.current === true && open === false) {

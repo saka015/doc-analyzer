@@ -1,3 +1,4 @@
+// Import necessary modules and components
 import { useContext, useState } from "react";
 import { Button, IconButton } from "@mui/material";
 import { GrUndo, GrRedo } from "react-icons/gr";
@@ -31,17 +32,25 @@ import TextContainer from "./Container";
 import Navbar from "./Navigation";
 import ToolContext from "../ToolContext";
 
+// Main toolbar component
 const MainToolBAr = () => {
+  // Hook to get and set the selected tool from context
   const [selectedTool, setSelectedTool] = useContext(ToolContext);
+  // State to handle the position of the toolbar (up or down)
   const [isUp, setIsUp] = useState(false);
 
+  // Function to toggle the toolbar position state
   const togglePosition = () => {
     setIsUp(!isUp);
   };
+
+  // Function to handle button click in the toolbar
+  // It updates the selected tool state and logs it
   const handleButtonClick = (tool) => {
     setSelectedTool(tool);
     console.log(selectedTool);
   };
+  //compound icon for font size
   const FontSizer = () => {
     const selectedText = window.getSelection().toString();
     const textSize = selectedText.length;
@@ -68,6 +77,7 @@ const MainToolBAr = () => {
     );
   };
 
+  //compound icon in tool bar for styling
   const StyeComponent = () => {
     return (
       <div className="flex space-x-0 ">
@@ -106,6 +116,7 @@ const MainToolBAr = () => {
     );
   };
 
+  // compound icon in toolbar for features
   const FeatureComponent = () => {
     return (
       <div className="flex">
@@ -131,7 +142,8 @@ const MainToolBAr = () => {
       </div>
     );
   };
-
+  
+  //icons in toolbar 
   const toolIcons = [
     { icon: <GrUndo className="text-xl" />, tooltip: "Undo" },
     { icon: <GrRedo className="text-xl" />, tooltip: "Redo" },
@@ -250,7 +262,9 @@ const MainToolBAr = () => {
 
   return (
     <>
+      {/* Conditionally render Navbar component if toolbar is not up */}
       {!isUp && <Navbar />}
+      {/* Toolbar UI */}
       <div
         style={{ backgroundColor: "#edf2fa" }}
         className={`flex  items-center  space-x-0 h-[45px] rounded-2xl mr-8 ml-4  ${

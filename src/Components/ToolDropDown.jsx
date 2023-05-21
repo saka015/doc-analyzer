@@ -1,3 +1,4 @@
+// Import required components and icons
 import * as React from "react";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
@@ -7,81 +8,56 @@ import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
+// ...icons import...
 import {
-  MdFormatLineSpacing,
   MdSpellcheck,
   MdOutlineRateReview,
   MdOutlineCompareArrows,
-  MdOutlineRequestPage,
-  MdOutlinePostAdd,
-  MdNotes,
-  MdInsertChartOutlined,
   MdNavigateNext,
-  MdCopyAll,
-  MdContentPaste,
-  MdContentPasteOff,
-  MdSelectAll,
-    MdOutlineFindReplace,
   MdOutlineTranslate
 } from "react-icons/md";
 import { TiDocumentText } from "react-icons/ti";
-import { BiCheckCircle, BiCut, BiImageAlt } from "react-icons/bi";
-import { IoMdCopy, IoIosArrowDropdown } from "react-icons/io";
-import { RiUserShared2Line, RiHistoryFill, RiTableLine } from "react-icons/ri";
-import { TbMathPi, TbHash, TbPageBreak, TbColumns } from "react-icons/tb";
-import { VscTrash, VscRemoteExplorer } from "react-icons/vsc";
-import {
-  AiOutlineInfoCircle,
-  AiFillPrinter,
-  AiOutlineLine,
-} from "react-icons/ai";
-import { GrLanguage, GrEmoji , GrUserSettings } from "react-icons/gr";
-import { HiOutlineDocumentText } from "react-icons/hi";
-import { HiOutlineListBullet } from "react-icons/hi2";
-import { GrUndo, GrRedo } from "react-icons/gr";
-import { CgSmartHomeHeat, CgFormatIndentIncrease } from "react-icons/cg";
-import { ImImage, ImPageBreak } from "react-icons/im";
-import { RiOmega, RiFormatClear, RiFileSearchLine } from "react-icons/ri";
-import { BsTypeBold , BsUniversalAccess } from "react-icons/bs";
-import { CiTextAlignJustify } from "react-icons/ci";
-import { TbFileOrientation } from "react-icons/tb";
+import {  VscRemoteExplorer } from "react-icons/vsc";
+import {  GrUserSettings } from "react-icons/gr";
+import {  RiFileSearchLine } from "react-icons/ri";
+import {  BsUniversalAccess } from "react-icons/bs";
 import { MdFormatQuote } from "react-icons/md";
 import { GoFileSymlinkFile } from "react-icons/go";
 import { IoMicOutline } from 'react-icons/io5'
 import {IoIosNotificationsOutline} from 'react-icons/io'
 
 export default function ToolDropDown() {
+  // Hooks for managing dropdown open state and anchor for dropdown
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
+  // Handler to toggle dropdown
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
+  // Handler to close dropdown when clicking away
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-
     setOpen(false);
   };
 
+  // Handler for keyboard actions on dropdown list
   function handleListKeyDown(event) {
-    if (event.key === "Tab") {
+    if (event.key === "Tab" || event.key === "Escape") {
       event.preventDefault();
-      setOpen(false);
-    } else if (event.key === "Escape") {
       setOpen(false);
     }
   }
 
-  // return focus to the button when we transitioned from !open -> open
+  // Return focus to the button when transitioning from !open to open
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
     if (prevOpen.current === true && open === false) {
       anchorRef.current.focus();
     }
-
     prevOpen.current = open;
   }, [open]);
 

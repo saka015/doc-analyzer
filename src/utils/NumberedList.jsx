@@ -6,8 +6,7 @@ import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
-import { MdOutlineArrowDropDown , MdChecklist ,MdOutlineIndeterminateCheckBox ,MdOutlineCheckBox } from "react-icons/md";
-import {CiTextAlignLeft , CiTextAlignCenter, CiTextAlignRight , CiTextAlignJustify} from "react-icons/ci"
+import { MdOutlineArrowDropDown ,  } from "react-icons/md";
 import { IconButton } from "@mui/material";
 import {BsListTask , BsListCheck} from 'react-icons/bs'
 

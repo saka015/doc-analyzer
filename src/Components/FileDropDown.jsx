@@ -1,6 +1,7 @@
-import * as React from "react";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
+
+// More Material-UI components and some icons are imported for constructing the dropdown menu
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Grow from "@mui/material/Grow";
 import Paper from "@mui/material/Paper";
@@ -17,6 +18,7 @@ import { VscTrash } from 'react-icons/vsc'
 import { AiOutlineInfoCircle , AiFillPrinter } from 'react-icons/ai'
 import { GrLanguage } from 'react-icons/gr'
 import {HiOutlineDocumentText} from 'react-icons/hi'
+import React from "react";
 
 export default function FileDropDown() {
   const [open, setOpen] = React.useState(false);
@@ -26,14 +28,15 @@ export default function FileDropDown() {
     setOpen((prevOpen) => !prevOpen);
   };
 
+  // Additional handlers remain the same for handling click and keydown events
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-
     setOpen(false);
   };
 
+  // The function to handle keyboard navigation within the dropdown menu
   function handleListKeyDown(event) {
     if (event.key === "Tab") {
       event.preventDefault();
@@ -43,7 +46,7 @@ export default function FileDropDown() {
     }
   }
 
-  // return focus to the button when we transitioned from !open -> open
+  // useEffect to return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
     if (prevOpen.current === true && open === false) {
@@ -52,6 +55,8 @@ export default function FileDropDown() {
 
     prevOpen.current = open;
   }, [open]);
+
+  // The rest of the component remains largely the same, with additional menu items defined
 
   return (
     <div className="">
@@ -154,35 +159,6 @@ export default function FileDropDown() {
           </Grow>
         )}
       </Popper>
-      {/* <Button
-        id="demo-positioned-button"
-        aria-controls={open ? 'demo-positioned-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-        sx={{color:'transparent'}}
-          >
-             
-      </Button>
-      <Menu
-        id="demo-positioned-menu"
-        aria-labelledby="demo-positioned-button"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-      >
-        <MenuItem onClick={handleClose}>Fit</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
-      </Menu> */}
     </div>
   );
 }

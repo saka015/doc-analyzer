@@ -6,7 +6,7 @@ import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
-import { MdOutlineArrowDropDown, MdFormatLineSpacing } from "react-icons/md";
+import { MdFormatLineSpacing } from "react-icons/md";
 import { IconButton } from "@mui/material";
 
 export default function LineSpacing() {

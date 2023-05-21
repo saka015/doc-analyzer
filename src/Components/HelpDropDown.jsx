@@ -1,3 +1,4 @@
+// Importing the necessary libraries and components
 import * as React from "react";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
@@ -7,60 +8,29 @@ import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
-import {
-  MdFormatLineSpacing,
-  MdSpellcheck,
-  MdOutlineRateReview,
-  MdOutlineCompareArrows,
-  MdOutlineRequestPage,
-  MdOutlinePostAdd,
-  MdNotes,
-  MdInsertChartOutlined,
-  MdNavigateNext,
-  MdCopyAll,
-  MdContentPaste,
-  MdContentPasteOff,
-  MdSelectAll,
-    MdOutlineFindReplace,
-  MdOutlineTranslate
-} from "react-icons/md";
+
+// Importing the necessary icons
 import { TiDocumentText } from "react-icons/ti";
-import { BiCheckCircle, BiCut, BiImageAlt } from "react-icons/bi";
-import { IoMdCopy, IoIosArrowDropdown } from "react-icons/io";
-import { RiUserShared2Line, RiHistoryFill, RiTableLine } from "react-icons/ri";
-import { TbMathPi, TbHash, TbPageBreak, TbColumns } from "react-icons/tb";
-import { VscTrash, VscRemoteExplorer } from "react-icons/vsc";
-import {
-  AiOutlineInfoCircle,
-  AiFillPrinter,
-  AiOutlineLine,
-} from "react-icons/ai";
-import { GrLanguage, GrEmoji , GrUserSettings } from "react-icons/gr";
-import { HiOutlineDocumentText } from "react-icons/hi";
-import { HiOutlineListBullet , HiOutlineAcademicCap } from "react-icons/hi2";
-import { GrUndo, GrRedo } from "react-icons/gr";
-import { CgSmartHomeHeat, CgFormatIndentIncrease } from "react-icons/cg";
-import { ImImage, ImPageBreak } from "react-icons/im";
-import { RiOmega, RiFormatClear, RiFileSearchLine , RiAlertLine } from "react-icons/ri";
-import { BsTypeBold , BsUniversalAccess } from "react-icons/bs";
-import { CiTextAlignJustify } from "react-icons/ci";
-import { TbFileOrientation , TbMessageReport , TbKeyboard } from "react-icons/tb";
-import {BiHelpCircle} from 'react-icons/bi'
-import { MdFormatQuote } from "react-icons/md";
-import { GoFileSymlinkFile } from "react-icons/go";
-import { IoMicOutline } from 'react-icons/io5'
-import {IoIosNotificationsOutline} from 'react-icons/io'
-import SearchBar from "../utils/SearchBar";
-import {GiAerialSignal} from 'react-icons/gi'
+import { HiOutlineAcademicCap } from "react-icons/hi2";
+import { RiAlertLine } from "react-icons/ri";
+import { TbMessageReport, TbKeyboard } from "react-icons/tb";
+import { BiHelpCircle } from "react-icons/bi";
 
+import SearchBar from "../utils/SearchBar"; // Importing the SearchBar component
+import { GiAerialSignal } from "react-icons/gi";
+
+// Main Component
 export default function HelpDropDown() {
+  // Setting the initial state of the dropdown menu to be closed
   const [open, setOpen] = React.useState(false);
-  const anchorRef = React.useRef(null);
+  const anchorRef = React.useRef(null); // Reference to the dropdown button
 
+  // Function to toggle the open state of the dropdown menu
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
+  // Function to close the dropdown menu when we click away
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
@@ -69,6 +39,7 @@ export default function HelpDropDown() {
     setOpen(false);
   };
 
+  // Function to handle the behavior of the dropdown menu when certain keys are pressed
   function handleListKeyDown(event) {
     if (event.key === "Tab") {
       event.preventDefault();
@@ -78,7 +49,7 @@ export default function HelpDropDown() {
     }
   }
 
-  // return focus to the button when we transitioned from !open -> open
+  // This effect ensures focus is returned to the button when transitioning from open to not open
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
     if (prevOpen.current === true && open === false) {
@@ -87,6 +58,8 @@ export default function HelpDropDown() {
 
     prevOpen.current = open;
   }, [open]);
+
+  // The render return of the component
 
   return (
     <div className="">
@@ -122,7 +95,6 @@ export default function HelpDropDown() {
                 borderRadius: 4,
                 width: 300,
                 maxHeight: 500,
-                
               }}
             >
               <ClickAwayListener onClickAway={handleClose}>
@@ -132,15 +104,13 @@ export default function HelpDropDown() {
                   id="composition-menu"
                   aria-labelledby="composition-button"
                   onKeyDown={handleListKeyDown}
-                              >
-                                  <Box className="border-b-2 mb-2">
-                                      <div className="pl-8 pr-8 pt-2  rounded-xl">
-                                          <SearchBar />
-                                          </div>
-                                  </Box>
-                                  <Box className="border-b-2 mb-2">
-                                      
-                                      
+                >
+                  <Box className="border-b-2 mb-2">
+                    <div className="pl-8 pr-8 pt-2  rounded-xl">
+                      <SearchBar />
+                    </div>
+                  </Box>
+                  <Box className="border-b-2 mb-2">
                     <MenuItem
                       className="flex justify-between items-center"
                       onClick={handleClose}
@@ -148,7 +118,6 @@ export default function HelpDropDown() {
                       <div className="flex items-center text-base">
                         <BiHelpCircle className="mr-2 text-base" /> Help
                       </div>
-                      
                     </MenuItem>
                     <MenuItem
                       className="flex justify-between items-center"
@@ -158,7 +127,6 @@ export default function HelpDropDown() {
                         <HiOutlineAcademicCap className="mr-2 text-black text-xl" />{" "}
                         Training
                       </div>
-                     
                     </MenuItem>
                     <MenuItem
                       className="flex justify-between items-center"
@@ -167,9 +135,7 @@ export default function HelpDropDown() {
                       <div className="flex items-center text-sm mb-2 ">
                         <GiAerialSignal className="mr-2 text-xl" /> Updates
                       </div>
-                      
                     </MenuItem>
-                    
                   </Box>
 
                   <Box className="border-b-2 mb-2">
@@ -178,7 +144,8 @@ export default function HelpDropDown() {
                       onClick={handleClose}
                     >
                       <div className="flex items-center text-sm">
-                        <TbMessageReport className="mr-2 text-base" /> Help Docs improve
+                        <TbMessageReport className="mr-2 text-base" /> Help Docs
+                        improve
                       </div>
                     </MenuItem>
                     <MenuItem
@@ -186,19 +153,18 @@ export default function HelpDropDown() {
                       onClick={handleClose}
                     >
                       <div className="flex items-center text-sm mb-2">
-                        <RiAlertLine className="mr-2 text-base" /> Report abuse 
-                                          </div>
-                                           
+                        <RiAlertLine className="mr-2 text-base" /> Report abuse
+                      </div>
                     </MenuItem>
-                   
-                                  </Box>
-                                  <Box className="border-b-2 mb-2">
+                  </Box>
+                  <Box className="border-b-2 mb-2">
                     <MenuItem
                       className="flex justify-between items-center"
                       onClick={handleClose}
                     >
                       <div className="flex items-center text-sm">
-                        <TiDocumentText className="mr-2 text-base" /> Privacy Policy
+                        <TiDocumentText className="mr-2 text-base" /> Privacy
+                        Policy
                       </div>
                     </MenuItem>
                     <MenuItem
@@ -206,27 +172,25 @@ export default function HelpDropDown() {
                       onClick={handleClose}
                     >
                       <div className="flex items-center text-sm mb-2">
-                        <TiDocumentText className="mr-2 text-base" /> Terms of Service 
-                                          </div>
-                                           
+                        <TiDocumentText className="mr-2 text-base" /> Terms of
+                        Service
+                      </div>
                     </MenuItem>
-                   
                   </Box>
                   <Box className=" mb-2">
                     <MenuItem
-                     
                       className="flex justify-between items-center"
                       onClick={handleClose}
                     >
                       <div className="flex items-center text-sm">
-                        <TbKeyboard className="mr-2 text-base" /> Keyboard shortcuts
-                                          </div>
-                                           <span className="text-sm ml-auto text-gray-500">Ctrl+/</span>
-                    
+                        <TbKeyboard className="mr-2 text-base" /> Keyboard
+                        shortcuts
+                      </div>
+                      <span className="text-sm ml-auto text-gray-500">
+                        Ctrl+/
+                      </span>
                     </MenuItem>
-                    
                   </Box>
-                 
                 </MenuList>
               </ClickAwayListener>
             </Paper>
