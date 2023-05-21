@@ -13,7 +13,8 @@ const TextContainer = ({ width, height, placeholder }) => {
   const quillRef = useRef(null);
 
 
-  useEffect(() => {
+    useEffect(() => {
+      console.log("tool : " , selectedTool)
     // Call tool function based on the selected tool
     if (selectedTool === "Undo") {
       // Handle undo functionality
@@ -57,6 +58,7 @@ const TextContainer = ({ width, height, placeholder }) => {
       // Handle spell-check functionality
         console.log("bold");
         applyBoldFormatting()
+        setSelectedTool(null)
       }
       else if (selectedTool === "italic") {
       // Handle spell-check functionality
@@ -64,7 +66,9 @@ const TextContainer = ({ width, height, placeholder }) => {
       }
       else if (selectedTool === "underline") {
       // Handle spell-check functionality
-      console.log("underline");
+     console.log("underline");
+        applyUnderlineFormatting();
+        setSelectedTool(null);
       }
       else if (selectedTool === "font-color") {
       // Handle spell-check functionality
@@ -108,14 +112,36 @@ const TextContainer = ({ width, height, placeholder }) => {
     } 
     // Add more conditions for other tools...
   }, [selectedTool]);
-    const applyBoldFormatting = () => {
+     const applyBoldFormatting = () => {
+const quill = quillRef.current.getEditor();
+    const selection = quill.getSelection();
+    if (selection) {
+        const { index, length } = selection;
+        const formats = quill.getFormat(index, length);
+        let isBold = formats.bold;
+        if (isBold === undefined) isBold = false;
+        console.log('Before format change:', isBold);
+        quill.format('bold', !isBold);
+        const formatsAfter = quill.getFormat(index, length);
+        const isBoldAfter = formatsAfter.bold;
+        console.log('After format change:', isBoldAfter);
+    }
+    };
+    const applyUnderlineFormatting = () => {
     const quill = quillRef.current.getEditor();
     const selection = quill.getSelection();
     if (selection) {
-      const { index, length } = selection;
-      quill.formatText(index, length, "bold", true);
+        const { index, length } = selection;
+        const formats = quill.getFormat(index, length);
+        let isUnderlined = formats.underline;
+        if (isUnderlined === undefined) isUnderlined = false;
+        console.log('Before format change:', isUnderlined);
+        quill.format('underline', !isUnderlined);
+        const formatsAfter = quill.getFormat(index, length);
+        const isUnderlinedAfter = formatsAfter.underline;
+        console.log('After format change:', isUnderlinedAfter);
     }
-  };
+};
 
   const handleChange = (value) => {
      setContent(value);
